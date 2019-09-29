@@ -11,6 +11,20 @@ If there are 5 scenes, the first five letters in the string are the "V/I" settin
 
 module Vismap
 
+# Reload extension by running this method from the Ruby Console:
+#   Example::HelloWorld.reload
+#   def self.reload
+#     original_verbose = $VERBOSE
+#     $VERBOSE = nil
+#     pattern = File.join(__dir__, '**/*.rb')
+#     Dir.glob(pattern).each { |file|
+#       # Cannot use `Sketchup.load` because its an alias for `Sketchup.require`.
+#       load file
+# 	}.size
+#   ensure
+#     $VERBOSE = original_verbose
+#   end
+
 class Vismap_Model
 
 	def initialize()
@@ -48,11 +62,14 @@ class Vismap_Model
     	answer = 'V' * (@scenes.count*@layers.length)
     	i = 0
     	@scenes.each do |s|
+			if(s.layers != nil)
 			s.layers.each do |lr|
 				loc = Vismap.locate( lr.name, layer_names() ) * @scenes.count
 				loc += Vismap.locate( s.name, scene_names() )
 				answer[loc..loc] = "I"
 			end
+			end
+
 			i += 1
     	end
     	return answer
