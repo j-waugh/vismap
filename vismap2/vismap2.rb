@@ -62,11 +62,14 @@ class Vismap_Model
     	answer = 'V' * (@scenes.count*@layers.length)
     	i = 0
     	@scenes.each do |s|
+			if(s.layers != nil)
 			s.layers.each do |lr|
 				loc = Vismap.locate( lr.name, layer_names() ) * @scenes.count
 				loc += Vismap.locate( s.name, scene_names() )
 				answer[loc..loc] = "I"
 			end
+			end
+
 			i += 1
     	end
     	return answer
