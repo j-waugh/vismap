@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- Plugins/vismap2/vismap2_buttons.html -- Layer/Scene Visibility Map v. 2.0 -->
+<!-- copyright 2009, Martin Rinehart -->
+
+<html> 
+
+<head>
+	<title> Layer/Scene Visibility Map v2 Buttons </title>
+	<meta http-equiv="content-type" 
+		content="text/html;charset=utf-8">
+		
+	<style type='text/css'>
+		body { 
+			font-family: FreeSans, Helvetica, Arial, sans-serif; 
+			text-align:center;
+		}
+		button {
+			height: 30px;
+			position:relative;
+			top:-7px;
+		}
+	</style>
+</head>
+   
+<body background=#e0ffe0>
+
+<button id='more' onclick='top.main.resize( 2 )'> 
+	<font size=+1> <b> B </b> </font>
+</button>
+&nbsp;
+
+<button id='less' onclick='top.main.resize( -2 )'> 
+	<font size=-1> s </font>
+</button>
+&nbsp;&nbsp;
+
+<button id='from_model' 
+	style='background:#e0ffe0' 
+	onclick=btn_refresh()> 
+	<font size=+1> Get Data </font> 
+</button>
+&nbsp;&nbsp;
+
+<button id='to_model' 
+	style='background:#e0ffe0' 
+	onclick=top.btn_download()> 
+	<font size=+1> Send Data </font> 
+</button>
+
+<script type='text/JavaScript'>
+
+	function btn_refresh() {
+		cursor( 'wait' );
+		top.main.btn_refresh();
+		cursor( 'default' );
+	}
+
+	function cursor( type ) {
+		document.body.style.cursor = type;
+		top.main.cursor( type );
+		top.banner.cursor( type );
+	}
+
+</script>
+
+</body>
+
+<!-- end of Plugins/vismap2/vismap2_buttons.html -->   
