@@ -143,7 +143,7 @@ JavaScript returns the new list of Visibles and Invisibles as a bit map encoded 
 	
 	def getVis()
 		@vis = ''
-		bits = @map[3,@map.length - 3]
+		bits = @map[3,@map.length - 3].codepoints
 		(0..bits.length-1).each do |i|
 			word = bits[i]
 			word -= @@base;
@@ -161,9 +161,9 @@ JavaScript returns the new list of Visibles and Invisibles as a bit map encoded 
 	end
 	
 	def getLength()
-		@length = 64 * 64 * ( @map[0] - @@base )
-		@length += 64 * ( @map[1] - @@base )
-		@length += @map[2] - @@base;
+		@length = 64 * 64 * ( @map[0].codepoints[0] - @@base )
+		@length += 64 * ( @map[1].codepoints[0] - @@base )
+		@length += @map[2].codepoints[0] - @@base;
 	end
 	
 end # of class Bitmap
